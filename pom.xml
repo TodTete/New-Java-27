@@ -8,10 +8,57 @@
     <artifactId>New-Java-27</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>New Java 27</name>
+
+    <description>
+        Hands-on laboratory demonstrating Java 27 features
+        through Before &amp; After examples.
+    </description>
+
     <properties>
-        <maven.compiler.source>25</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <maven.compiler.source>27</maven.compiler.source>
+        <maven.compiler.target>27</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <junit.version>6.0.0</junit.version>
     </properties>
+
+    <dependencies>
+
+        <!-- Testing framework -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+            <!-- Java compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+
+                <configuration>
+                    <release>27</release>
+                </configuration>
+            </plugin>
+
+            <!-- Unit tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.3</version>
+            </plugin>
+
+        </plugins>
+
+    </build>
 
 </project>
