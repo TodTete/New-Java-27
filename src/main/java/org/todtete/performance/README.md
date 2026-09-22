@@ -1,6 +1,3 @@
-# 12. `performance/README.md`
-
-```markdown
 # Performance and Runtime
 
 ## Overview
@@ -33,6 +30,8 @@ source code to take advantage of them.
 
 - `G1GarbageCollectorDemo.java`
 - `CompactObjectHeadersDemo.java`
+
+Tests live in `src/test/java/org/todtete/performance`.
 
 ---
 

@@ -13,22 +13,43 @@ public final class BeforeConcurrency {
     private BeforeConcurrency() {
     }
 
-    public static void execute() throws Exception {
+    /**
+     * Executes two independent tasks on a shared thread pool.
+     *
+     * <p>
+     * The caller owns the lifecycle of the executor, the error
+     * handling and the cancellation of any pending task.
+     * </p>
+     *
+     * @return combined result of both tasks
+     * @throws Exception if a task fails or the caller is interrupted
+     */
+    public static String execute() throws Exception {
 
         try (ExecutorService executor =
                      Executors.newFixedThreadPool(2)) {
 
             Future<String> firstTask =
-                    executor.submit(() -> "Task A");
+                    executor.submit(() -> "Task A completed");
 
             Future<String> secondTask =
-                    executor.submit(() -> "Task B");
+                    executor.submit(() -> "Task B completed");
 
             String firstResult = firstTask.get();
             String secondResult = secondTask.get();
 
-            System.out.println(firstResult);
-            System.out.println(secondResult);
+            return firstResult
+                    + " | "
+                    + secondResult;
         }
+    }
+
+    /**
+     * Prints the outcome of the traditional approach.
+     *
+     * @throws Exception if a task fails
+     */
+    public static void demonstrate() throws Exception {
+        System.out.println(execute());
     }
 }

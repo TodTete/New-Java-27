@@ -1,7 +1,5 @@
 package org.todtete.constants;
 
-import java.lang.runtime.LazyConstant;
-
 /**
  * Demonstrates the Lazy Constants API introduced as a
  * preview feature in Java 27.
@@ -27,6 +25,11 @@ public final class LazyConstantsDemo {
 
     /**
      * Lazy constant whose value is initialized on first access.
+     *
+     * <p>
+     * {@code LazyConstant} lives in {@code java.lang}, so no
+     * explicit import is required.
+     * </p>
      */
     private static final LazyConstant<String>
             APPLICATION_CONFIGURATION =

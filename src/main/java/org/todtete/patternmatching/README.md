@@ -1,7 +1,3 @@
-
-# 10. `patternmatching/README.md`
-
-```markdown
 # Primitive Types in Patterns
 
 ## Overview
@@ -55,3 +51,35 @@ Pattern
 Match
    ↓
 Apply logic
+```
+
+## Exhaustiveness
+
+A `switch` expression must cover every possible input value.
+
+Guarded patterns such as `case int number when number > 0`
+never count towards exhaustiveness, because the compiler
+cannot evaluate the guard.
+
+For that reason the switch closes with an unconditional
+primitive pattern:
+
+```java
+return switch (value) {
+    case 0 -> "Zero";
+    case int number when number > 0 -> "Positive integer";
+    case int number -> "Negative integer";
+};
+```
+
+## Files
+
+- `BeforePatternMatching.java`
+- `Java27PatternMatching.java`
+
+Tests live in `src/test/java/org/todtete/patternmatching`.
+
+---
+
+Created by **Ricardo Vallejo Sanchez**  
+September 2027

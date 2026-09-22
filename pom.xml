@@ -7,8 +7,7 @@
     <groupId>org.todtete</groupId>
     <artifactId>New-Java-27</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <!-- <arg>jdk.incubator.vector</arg>
-    <arg>enable-preview</arg> -->
+
     <name>New Java 27</name>
 
     <description>
@@ -17,11 +16,21 @@
     </description>
 
     <properties>
-        <maven.compiler.source>27</maven.compiler.source>
-        <maven.compiler.target>27</maven.compiler.target>
+        <maven.compiler.release>27</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.parameters>true</maven.compiler.parameters>
         <junit.version>6.0.0</junit.version>
+
+        <!--
+            The laboratory relies on Preview APIs (JEP 531, 532, 533)
+            and on the incubating Vector API (JEP 537).
+
+            Both have to be enabled at compile time and at run time,
+            so the flags are declared once and reused by every plugin.
+        -->
+        <java.preview.args>--enable-preview</java.preview.args>
+        <java.incubator.module>jdk.incubator.vector</java.incubator.module>
+        <main.class>org.todtete.Main</main.class>
     </properties>
 
     <dependencies>
@@ -48,6 +57,19 @@
 
                 <configuration>
                     <release>27</release>
+
+                    <compilerArgs>
+                        <arg>${java.preview.args}</arg>
+                        <arg>--add-modules</arg>
+                        <arg>${java.incubator.module}</arg>
+                    </compilerArgs>
+
+                    <!--
+                        Preview and incubator APIs are noisy by design.
+                        The warnings are expected here and would otherwise
+                        hide genuine compilation problems.
+                    -->
+                    <showWarnings>false</showWarnings>
                 </configuration>
             </plugin>
 
@@ -56,6 +78,51 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
+
+                <configuration>
+                    <argLine>
+                        ${java.preview.args} --add-modules ${java.incubator.module}
+                    </argLine>
+                </configuration>
+            </plugin>
+
+            <!-- Executable JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>${main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!--
+                Runs the laboratory in a forked JVM so the preview and
+                incubator flags are applied to the demonstration itself
+                and not to the Maven process.
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+
+                <configuration>
+                    <executable>${java.home}/bin/java</executable>
+
+                    <arguments>
+                        <argument>${java.preview.args}</argument>
+                        <argument>--add-modules</argument>
+                        <argument>${java.incubator.module}</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>${main.class}</argument>
+                    </arguments>
+                </configuration>
             </plugin>
 
         </plugins>

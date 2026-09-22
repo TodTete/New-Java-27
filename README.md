@@ -56,23 +56,23 @@ March 2027 under Oracle's current Java SE roadmap.
 
 ---
 
-# Features Covered
+## Features Covered
 
 | JEP | Feature | Category | Status |
 |-----|---------|----------|--------|
-| 523 | Make G1 the Default Garbage Collector | Performance | Final |
+| 523 | Make G1 the Default Garbage Collector in All Environments | Performance | Final |
 | 527 | Post-Quantum Hybrid Key Exchange for TLS 1.3 | Security | Final |
-| 531 | Lazy Constants | Libraries | Preview |
-| 532 | Primitive Types in Patterns, instanceof, and switch | Language | Preview |
-| 533 | Structured Concurrency | Concurrency | Preview |
-| 534 | Compact Object Headers | JVM | Final |
+| 531 | Lazy Constants | Libraries | Third Preview |
+| 532 | Primitive Types in Patterns, instanceof, and switch | Language | Fifth Preview |
+| 533 | Structured Concurrency | Concurrency | Seventh Preview |
+| 534 | Compact Object Headers by Default | JVM | Final |
 | 536 | JFR In-Process Data Redaction | Monitoring | Final |
-| 537 | Vector API | Performance | Incubator |
-| 538 | PEM Encodings of Cryptographic Objects | Security | Preview |
+| 537 | Vector API | Performance | Twelfth Incubator |
+| 538 | PEM Encodings of Cryptographic Objects | Security | Third Preview |
 
 ---
 
-# Before & After Methodology
+## Before & After Methodology
 
 The project follows a simple model:
 
@@ -98,3 +98,144 @@ The project follows a simple model:
                     │
                     ▼
               TEST + ANALYSIS
+```
+
+---
+
+## Project Structure
+
+```text
+src/main/java/org/todtete
+├── Main.java
+├── concurrency        BeforeConcurrency / StructuredConcurrencyDemo
+├── constants          BeforeConstants / LazyConstantsDemo
+├── patternmatching    BeforePatternMatching / Java27PatternMatching
+├── performance        G1GarbageCollectorDemo / CompactObjectHeadersDemo
+├── security           PostQuantumTlsDemo
+└── vector             VectorApiDemo
+
+src/test/java/org/todtete
+├── concurrency        StructuredConcurrencyTest
+├── constants          LazyConstantsTest
+├── patternmatching    PatternMatchingTest
+├── performance        PerformanceDemoTest
+├── security           PostQuantumTlsTest
+└── vector             VectorApiTest
+```
+
+---
+
+## Requirements
+
+- JDK 27
+- Maven 3.9 or later
+
+Check that Maven is using JDK 27:
+
+```bash
+mvn -version
+```
+
+---
+
+## Preview and Incubator Flags
+
+Three of the demonstrated features are Preview APIs
+(JEP 531, 532 and 533) and one is an incubating module
+(JEP 537).
+
+Both groups have to be enabled at compile time **and** at
+run time:
+
+```text
+--enable-preview
+--add-modules jdk.incubator.vector
+```
+
+The `pom.xml` declares these flags once and passes them to
+the compiler, to Surefire and to the execution plugin, so no
+manual configuration is required.
+
+Preview APIs are tied to the exact release that compiled
+them, which means the classes produced here run on JDK 27
+only.
+
+---
+
+## Build and Run
+
+Compile the project:
+
+```bash
+mvn clean compile
+```
+
+Run the full test suite:
+
+```bash
+mvn test
+```
+
+Run the laboratory:
+
+```bash
+mvn compile exec:exec
+```
+
+Build the executable JAR:
+
+```bash
+mvn clean package
+```
+
+Run the packaged JAR directly:
+
+```bash
+java --enable-preview --add-modules jdk.incubator.vector \
+     -jar target/New-Java-27-1.0-SNAPSHOT.jar
+```
+
+---
+
+## Tests
+
+Each feature package has a matching test class. The suite
+covers the behaviour of the new APIs and, where a Before
+counterpart exists, verifies that both approaches produce the
+same result.
+
+```bash
+mvn test
+```
+
+---
+
+## Documentation
+
+| Document | Content |
+|----------|---------|
+| [docs/java-27-overview.md](docs/java-27-overview.md) | High-level tour of the Java 27 features |
+| [docs/feature-matrix.md](docs/feature-matrix.md) | Technical matrix by category and maturity |
+| [docs/before-and-after.md](docs/before-and-after.md) | The Before &amp; After methodology in detail |
+
+Each package under `src/main/java/org/todtete` also carries its
+own `README.md` describing the feature it demonstrates.
+
+---
+
+## Notes on the Examples
+
+- `LazyConstant` is declared in `java.lang`, so it needs no
+  import.
+- Guarded patterns do not contribute to the exhaustiveness of
+  a `switch` expression, so the primitive pattern example ends
+  with an unconditional pattern.
+- `Security.getProviders()` returns an array, not a
+  collection.
+- The Vector API example processes the elements that do not
+  fill a complete vector in a scalar tail loop.
+
+---
+
+Created by **Ricardo Vallejo Sanchez**  
+September 2027

@@ -10,15 +10,15 @@ The purpose is to distinguish between language features, APIs, JVM improvements,
 
 | JEP | Feature | Category | Maturity | Demonstrated in Project |
 |-----|---------|----------|----------|-------------------------|
-| JEP 523 | Make G1 the Default Garbage Collector | JVM / Performance | Final | Yes |
+| JEP 523 | Make G1 the Default Garbage Collector in All Environments | JVM / Performance | Final | Yes |
 | JEP 527 | Post-Quantum Hybrid Key Exchange for TLS 1.3 | Security | Final | Yes |
-| JEP 531 | Lazy Constants | Language / Runtime | Preview | Yes |
-| JEP 532 | Primitive Types in Patterns, instanceof, and switch | Language | Preview | Yes |
-| JEP 533 | Structured Concurrency | Concurrency | Preview | Yes |
-| JEP 534 | Compact Object Headers | JVM / Performance | Final | Yes |
+| JEP 531 | Lazy Constants | Libraries | Third Preview | Yes |
+| JEP 532 | Primitive Types in Patterns, instanceof, and switch | Language | Fifth Preview | Yes |
+| JEP 533 | Structured Concurrency | Concurrency | Seventh Preview | Yes |
+| JEP 534 | Compact Object Headers by Default | JVM / Performance | Final | Yes |
 | JEP 536 | JFR In-Process Data Redaction | Observability | Final | Documentation |
-| JEP 537 | Vector API | Performance | Incubator | Yes |
-| JEP 538 | PEM Encodings of Cryptographic Objects | Security API | Preview | Documentation |
+| JEP 537 | Vector API | Performance | Twelfth Incubator | Yes |
+| JEP 538 | PEM Encodings of Cryptographic Objects | Security API | Third Preview | Documentation |
 
 ---
 
@@ -34,7 +34,7 @@ and how developers express application logic.
 JEP 532 extends pattern matching to support primitive types
 in pattern contexts, including `instanceof` and `switch`.
 
-**Status:** Preview
+**Status:** Preview (Fifth Preview)
 
 **Project example:**
 
@@ -53,7 +53,7 @@ patternmatching/
 JEP 533 provides a structured approach to managing related
 concurrent tasks.
 
-**Status:** Preview
+**Status:** Preview (Seventh Preview)
 
 **Project example:**
 
@@ -72,7 +72,7 @@ concurrency/
 JEP 531 introduces `LazyConstant`, allowing values to be
 initialized lazily while providing constant-like semantics.
 
-**Status:** Preview
+**Status:** Preview (Third Preview)
 
 **Project example:**
 
@@ -106,7 +106,7 @@ JEP 534 enables compact object headers by default.
 JEP 537 continues the Vector API as an incubating API for
 expressing vector computations.
 
-**Status:** Incubator
+**Status:** Incubator (Twelfth Incubator)
 
 **Project example:**
 
@@ -131,7 +131,7 @@ for TLS 1.3.
 JEP 538 introduces APIs for encoding and decoding cryptographic
 objects using the Privacy-Enhanced Mail format.
 
-**Status:** Preview
+**Status:** Preview (Third Preview)
 
 ---
 
@@ -149,14 +149,14 @@ than represented by a standalone application class.
 
 ---
 
-# Maturity Definitions
+## Maturity Definitions
 
-## Final
+### Final
 
 A finalized feature is part of the Java SE platform specification
 and can be used as a standard Java platform capability.
 
-## Preview
+### Preview
 
 A Preview feature is available for evaluation and feedback before
 potential finalization.
@@ -164,7 +164,7 @@ potential finalization.
 Preview features require explicit enablement during compilation
 and execution.
 
-## Incubator
+### Incubator
 
 An Incubator feature is an experimental API intended to collect
 developer experience and feedback before potentially evolving
@@ -172,7 +172,7 @@ toward a standard API.
 
 ---
 
-# Repository Mapping
+## Repository Mapping
 
 ```text
 Java 27
@@ -201,7 +201,10 @@ Java 27
 
 ---
 
-# References
+## References
+
+- OpenJDK JDK 27 Project (authoritative JEP list):
+  https://openjdk.org/projects/jdk/27/
 
 - Oracle Java 27 Release Notes:
   https://www.oracle.com/java/technologies/javase/27all-relnotes.html

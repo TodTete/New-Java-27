@@ -35,6 +35,8 @@ capabilities and security architecture.
 
 - `PostQuantumTlsDemo.java`
 
+Tests live in `src/test/java/org/todtete/security`.
+
 ---
 
 Created by **Ricardo Vallejo Sanchez**  

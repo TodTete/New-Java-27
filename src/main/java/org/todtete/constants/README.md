@@ -54,12 +54,19 @@ Value requested?
     │   Value created
     │
     └── No initialization
+```
+
+## API Location
+
+`LazyConstant` is declared in `java.lang`, so no import is
+required to use it.
 
 ## Files
 
 - `BeforeConstants.java`
 - `LazyConstantsDemo.java`
-- `LazyConstantsTest.java`
+
+Tests live in `src/test/java/org/todtete/constants`.
 
 ---
 

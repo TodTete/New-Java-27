@@ -28,16 +28,21 @@ public final class Java27PatternMatching {
      */
     public static String classify(int value) {
 
+        /*
+         * A guarded pattern never contributes to exhaustiveness,
+         * so the switch closes with an unconditional primitive
+         * pattern that covers the remaining values.
+         */
         return switch (value) {
+
+            case 0 ->
+                    "Zero";
 
             case int number when number > 0 ->
                     "Positive integer";
 
-            case int number when number < 0 ->
+            case int number ->
                     "Negative integer";
-
-            case 0 ->
-                    "Zero";
         };
     }
 }

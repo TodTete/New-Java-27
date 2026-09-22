@@ -14,7 +14,7 @@ for specific use cases.
 
 ---
 
-# Methodology
+## Methodology
 
 Each demonstration follows five steps:
 
@@ -36,7 +36,7 @@ Each demonstration follows five steps:
 
 ---
 
-# BEFORE
+## BEFORE
 
 The **Before** implementation represents an approach that could
 reasonably be used with previous Java releases.
@@ -65,7 +65,7 @@ The important point is to understand:
 
 ---
 
-# AFTER
+## AFTER
 
 The **After** implementation demonstrates how a Java 27 feature
 can address the same problem.
@@ -101,45 +101,45 @@ differences introduced by the newer capability.
 
 ---
 
-# Comparison Criteria
+## Comparison Criteria
 
 Each Before & After example should be analyzed using the
 following criteria.
 
-## Readability
+### Readability
 
 Does the newer approach make the intent easier to understand?
 
-## Boilerplate
+### Boilerplate
 
 Does the feature eliminate repetitive code?
 
-## Safety
+### Safety
 
 Does the feature provide stronger compile-time or runtime
 guarantees?
 
-## Maintainability
+### Maintainability
 
 Does the new approach make future changes easier?
 
-## Performance
+### Performance
 
 Does the feature introduce potential performance benefits?
 
 Performance claims should be supported by appropriate
 measurements rather than assumptions.
 
-## Complexity
+### Complexity
 
 Does the feature reduce the conceptual complexity of the
 implementation?
 
 ---
 
-# Example 1 — Lazy Constants
+## Example 1 — Lazy Constants
 
-## Before
+### Before
 
 A traditional `static final` value can be initialized during
 class initialization.
@@ -154,7 +154,7 @@ Initialize value
 Application execution
 ```
 
-## After
+### After
 
 A Lazy Constant delays initialization until the value is requested.
 
@@ -171,7 +171,7 @@ Value requested
 Initialize value
 ```
 
-### Key Difference
+#### Key Difference
 
 The main difference is the timing of initialization.
 
@@ -180,9 +180,9 @@ the value may not always be required.
 
 ---
 
-# Example 2 — Structured Concurrency
+## Example 2 — Structured Concurrency
 
-## Before
+### Before
 
 A traditional approach may use an executor and individual
 `Future` objects.
@@ -198,7 +198,7 @@ ExecutorService
 The developer is responsible for coordinating the lifecycle
 of these tasks.
 
-## After
+### After
 
 Structured Concurrency groups related tasks into a structured
 scope.
@@ -214,16 +214,16 @@ StructuredTaskScope
 The relationship between the parent operation and its child
 tasks becomes explicit.
 
-### Key Difference
+#### Key Difference
 
 The primary change is the structure and lifecycle management
 of concurrent work.
 
 ---
 
-# Example 3 — Primitive Types in Patterns
+## Example 3 — Primitive Types in Patterns
 
-## Before
+### Before
 
 Traditional code may require explicit type checks and
 conversions.
@@ -238,7 +238,7 @@ Extract value
 Process value
 ```
 
-## After
+### After
 
 Java 27 extends pattern matching to primitive types.
 
@@ -250,16 +250,16 @@ Match
 Process value
 ```
 
-### Key Difference
+#### Key Difference
 
 The feature makes primitive handling more consistent with
 the pattern-matching model already used for reference types.
 
 ---
 
-# Example 4 — Vector API
+## Example 4 — Vector API
 
-## Before
+### Before
 
 A scalar implementation processes one element at a time.
 
@@ -270,7 +270,7 @@ A2 + B2
 A3 + B3
 ```
 
-## After
+### After
 
 The Vector API allows multiple values to be represented and
 processed as vector lanes.
@@ -283,7 +283,7 @@ processed as vector lanes.
 [C0 C1 C2 C3]
 ```
 
-### Key Difference
+#### Key Difference
 
 The programming model expresses data-parallel computation
 rather than individual scalar operations.
@@ -294,7 +294,7 @@ benchmarking.
 
 ---
 
-# Example 5 — JVM-Level Improvements
+## Example 5 — JVM-Level Improvements
 
 Not every Before & After comparison requires different
 application source code.
@@ -324,7 +324,7 @@ a JVM optimization.
 
 ---
 
-# Feature Maturity Matters
+## Feature Maturity Matters
 
 Before adopting a Java 27 feature, its maturity should be
 considered.
@@ -355,7 +355,7 @@ production recommendations.
 
 ---
 
-# What the Comparison Does Not Mean
+## What the Comparison Does Not Mean
 
 The Before & After approach does not mean:
 
@@ -385,27 +385,21 @@ constraints.
 
 ---
 
-# Practical Evaluation
+## Practical Evaluation
 
 For each Java 27 feature, developers should consider:
 
-### 1. Is the feature Final, Preview or Incubator?
-
-### 2. Does the project require the feature?
-
-### 3. Does the target runtime support it?
-
-### 4. Does the team understand the new programming model?
-
-### 5. Does it improve the specific implementation?
-
-### 6. Are there compatibility considerations?
-
-### 7. Has performance been measured where performance is relevant?
+1. Is the feature Final, Preview or Incubator?
+2. Does the project require the feature?
+3. Does the target runtime support it?
+4. Does the team understand the new programming model?
+5. Does it improve the specific implementation?
+6. Are there compatibility considerations?
+7. Has performance been measured where performance is relevant?
 
 ---
 
-# Final Perspective
+## Final Perspective
 
 The most valuable aspect of Java evolution is not simply the
 addition of new syntax.

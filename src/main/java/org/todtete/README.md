@@ -9,15 +9,20 @@ introduced or advanced in JDK 27.
 
 ## Feature Areas
 
-| Area | Feature |
-|------|---------|
-| Pattern Matching | Primitive Types in Patterns |
-| Concurrency | Structured Concurrency |
-| Constants | Lazy Constants |
-| Performance | G1 Default |
-| Performance | Compact Object Headers |
-| Security | Post-Quantum TLS |
-| Vector Computing | Vector API |
+| Package | Area | Feature |
+|---------|------|---------|
+| `patternmatching` | Pattern Matching | Primitive Types in Patterns |
+| `concurrency` | Concurrency | Structured Concurrency |
+| `constants` | Constants | Lazy Constants |
+| `performance` | Performance | G1 Default |
+| `performance` | Performance | Compact Object Headers |
+| `security` | Security | Post-Quantum TLS |
+| `vector` | Vector Computing | Vector API |
+
+Every package carries its own `README.md` with the Before &
+After analysis of its feature.
+
+`Main.java` runs all of the demonstrations in sequence.
 
 ## Project Philosophy
 

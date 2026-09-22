@@ -1,3 +1,5 @@
+package org.todtete.constants;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,7 +34,7 @@ class LazyConstantsTest {
 
     /**
      * Verifies that subsequent accesses return the same
-     * immutable String instance.
+     * instance, which proves the supplier ran only once.
      */
     @Test
     void shouldReturnSameValueOnRepeatedAccess() {
@@ -44,5 +46,16 @@ class LazyConstantsTest {
                 LazyConstantsDemo.getConfiguration();
 
         assertSame(first, second);
+    }
+
+    /**
+     * Verifies that the eager counterpart exposes the same value.
+     */
+    @Test
+    void shouldMatchTraditionalConfiguration() {
+
+        assertEquals(
+                BeforeConstants.getConfiguration(),
+                LazyConstantsDemo.getConfiguration());
     }
 }

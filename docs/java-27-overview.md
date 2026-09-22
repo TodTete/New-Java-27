@@ -14,45 +14,41 @@ explored in the **Java 27 Feature Lab**.
 
 ---
 
-# Java 27 at a Glance
+## Java 27 at a Glance
 
 Java 27 includes nine JEPs covering different areas of the
 Java platform.
 
 ```text
-                    Java 27
-                       │
-        ┌──────────────┼──────────────┐
-        │              │              │
-     Language      Libraries         JVM
-        │              │              │
-        ▼              ▼              ▼
-   Pattern        Lazy Constants    G1 GC
-   Matching                         Object Headers
-        │
-        ├──────────────────────────────┐
-        │                              │
-        ▼                              ▼
-   Concurrency                     Performance
-        │                              │
-        ▼                              ▼
- Structured                       Vector API
- Concurrency
-        │
-        └──────────────┬───────────────
-                       │
-                       ▼
-                    Security
-                       │
-              ┌────────┴────────┐
-              ▼                 ▼
-         Post-Quantum          PEM
-             TLS             Encodings
+Java 27
+│
+├── Language
+│   └── JEP 532  Primitive Types in Patterns        Preview
+│
+├── Concurrency
+│   └── JEP 533  Structured Concurrency             Preview
+│
+├── Libraries
+│   └── JEP 531  Lazy Constants                     Preview
+│
+├── JVM
+│   ├── JEP 523  G1 as Default Garbage Collector    Final
+│   └── JEP 534  Compact Object Headers by Default  Final
+│
+├── Performance
+│   └── JEP 537  Vector API                         Incubator
+│
+├── Security
+│   ├── JEP 527  Post-Quantum Hybrid Key Exchange   Final
+│   └── JEP 538  PEM Encodings                      Preview
+│
+└── Observability
+    └── JEP 536  JFR In-Process Data Redaction      Final
 ```
 
 ---
 
-# Main Areas of Evolution
+## Main Areas of Evolution
 
 ## 1. Language Evolution
 
@@ -72,7 +68,7 @@ The feature is a **Preview** in Java 27.
 
 ---
 
-# 2. Structured Concurrency
+## 2. Structured Concurrency
 
 Modern applications frequently execute multiple operations
 concurrently.
@@ -100,7 +96,7 @@ The feature is a **Preview** in Java 27.
 
 ---
 
-# 3. Lazy Constants
+## 3. Lazy Constants
 
 Traditional static constants may be initialized when their
 containing class is initialized.
@@ -140,13 +136,13 @@ Lazy Constants are a **Preview** feature in Java 27.
 
 ---
 
-# 4. JVM and Runtime Improvements
+## 4. JVM and Runtime Improvements
 
 Not every Java improvement requires new source-code syntax.
 
 Java 27 also includes changes to the JVM itself.
 
-## G1 Garbage Collector
+### G1 Garbage Collector
 
 JEP 523 makes G1 the default garbage collector.
 
@@ -155,7 +151,7 @@ strategy as the default runtime behavior.
 
 ---
 
-## Compact Object Headers
+### Compact Object Headers
 
 JEP 534 enables compact object headers by default.
 
@@ -168,7 +164,7 @@ This is primarily a JVM-level optimization.
 
 ---
 
-# 5. Vector API
+## 5. Vector API
 
 The Vector API allows developers to express computations that
 operate on multiple data elements simultaneously.
@@ -204,11 +200,11 @@ Potential application areas include:
 
 ---
 
-# 6. Security Evolution
+## 6. Security Evolution
 
 Java 27 continues the evolution of the Java security platform.
 
-## Post-Quantum Hybrid Key Exchange
+### Post-Quantum Hybrid Key Exchange
 
 JEP 527 introduces hybrid key exchange support for TLS 1.3.
 
@@ -220,7 +216,7 @@ in which quantum computing may pose new cryptographic threats.
 
 ---
 
-## PEM Encodings
+### PEM Encodings
 
 JEP 538 provides APIs for encoding and decoding cryptographic
 objects using PEM formats.
@@ -232,7 +228,7 @@ The feature is a **Preview** in Java 27.
 
 ---
 
-# 7. Observability
+## 7. Observability
 
 Java Flight Recorder continues to evolve as an important
 observability technology in the Java platform.
@@ -246,7 +242,7 @@ information and data protection must coexist.
 
 ---
 
-# Feature Maturity
+## Feature Maturity
 
 Java 27 contains features at different stages of maturity.
 
@@ -273,7 +269,7 @@ Java 27 features in production environments.
 
 ---
 
-# Why a Before & After Approach?
+## Why a Before & After Approach?
 
 A feature is easier to understand when it is compared with the
 problem it addresses.
@@ -292,7 +288,7 @@ Each major demonstration attempts to answer:
 
 ---
 
-# Java 27 in the Evolution of Java
+## Java 27 in the Evolution of Java
 
 The Java platform continues to evolve incrementally.
 
@@ -308,7 +304,11 @@ large platform transition.
 
 ---
 
-# Official References
+## Official References
+
+OpenJDK JDK 27 Project:
+
+https://openjdk.org/projects/jdk/27/
 
 Oracle Java 27 Release Notes:
 

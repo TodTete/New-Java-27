@@ -5,8 +5,8 @@ package org.todtete.performance;
  * the Garbage Collector selected by the JVM.
  *
  * <p>
- * Java 27 makes G1 the default garbage collector
- * across supported environments.
+ * JEP 523 makes G1 the default garbage collector in all
+ * environments.
  * </p>
  */
 public final class G1GarbageCollectorDemo {

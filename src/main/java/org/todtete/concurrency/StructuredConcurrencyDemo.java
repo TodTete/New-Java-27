@@ -24,7 +24,13 @@ public final class StructuredConcurrencyDemo {
     private StructuredConcurrencyDemo() {
     }
 
-    public static void execute() throws Exception {
+    /**
+     * Executes two related tasks as a single unit of work.
+     *
+     * @return combined result of both subtasks
+     * @throws Exception if a subtask fails or the scope is interrupted
+     */
+    public static String execute() throws Exception {
 
         try (var scope =
                      StructuredTaskScope.open()) {
@@ -35,10 +41,25 @@ public final class StructuredConcurrencyDemo {
             var taskB = scope.fork(
                     () -> "Task B completed");
 
+            /*
+             * join() waits for every subtask. When one of them fails
+             * the scope cancels the remaining work and propagates
+             * the failure to the caller.
+             */
             scope.join();
 
-            System.out.println(taskA.get());
-            System.out.println(taskB.get());
+            return taskA.get()
+                    + " | "
+                    + taskB.get();
         }
+    }
+
+    /**
+     * Prints the outcome of the structured scope.
+     *
+     * @throws Exception if a subtask fails
+     */
+    public static void demonstrate() throws Exception {
+        System.out.println(execute());
     }
 }

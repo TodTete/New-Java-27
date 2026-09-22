@@ -41,4 +41,34 @@ class PatternMatchingTest {
                 "Zero",
                 result);
     }
+
+    @Test
+    void shouldClassifyBoundaryValues() {
+
+        assertEquals(
+                "Positive integer",
+                Java27PatternMatching.classify(
+                        Integer.MAX_VALUE));
+
+        assertEquals(
+                "Negative integer",
+                Java27PatternMatching.classify(
+                        Integer.MIN_VALUE));
+    }
+
+    @Test
+    void shouldKeepTraditionalBehaviourAvailable() {
+
+        assertEquals(
+                "Positive integer",
+                BeforePatternMatching.classify(10));
+
+        assertEquals(
+                "Positive double",
+                BeforePatternMatching.classify(10.5));
+
+        assertEquals(
+                "Other number",
+                BeforePatternMatching.classify(10L));
+    }
 }

@@ -52,3 +52,16 @@ StructuredTaskScope
        │
        ▼
  Shared lifecycle
+```
+
+## Files
+
+- `BeforeConcurrency.java`
+- `StructuredConcurrencyDemo.java`
+
+Tests live in `src/test/java/org/todtete/concurrency`.
+
+---
+
+Created by **Ricardo Vallejo Sanchez**  
+September 2027
